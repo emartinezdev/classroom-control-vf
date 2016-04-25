@@ -43,5 +43,10 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Sup dude, my name is ${::hostname}": }
-  include 'motd'
+
+  # Include motd
+  file { '/etc/motd':
+    ensure  => 'present',
+    content => 'Welcome to your puppet classroom container!',
+  }
 }
