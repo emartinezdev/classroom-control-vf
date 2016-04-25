@@ -43,4 +43,5 @@ node default {
   # Example:
   #   class { 'my_class': }
   notify { "Sup dude, my name is ${::hostname}": }
+  include 'motd'
 }
