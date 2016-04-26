@@ -10,7 +10,7 @@ class skeleton {
     ensure  => file,
     owner   => root,
     group   => root,
-    source  => 'puppet:///site/skeleton/bashrc',
+    source  => 'puppet:///modules/skeleton/bashrc',
   }
 
 }
