@@ -46,7 +46,15 @@ node default {
 
   # Include motd
   file { '/etc/motd':
-    ensure  => 'present',
+    ensure  => 'file',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     content => 'Welcome to your puppet classroom container!',
+  }
+
+  exec { "cowsay 'Welcome to ${::fqdn}!'>/etc/motd":
+    path  =>  '/usr/bin:/usr/local/bin',
+    creates => '/etc/motd',
   }
 }
