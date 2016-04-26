@@ -38,6 +38,10 @@ ini_setting { 'random ordering':
 # will be included in every node's catalog, *in addition* to any classes
 # specified in the console for that node.
 
+node 'emartinezdev.puppetlabs.vm' {
+    include users
+}
+
 node default {
   # This is where you can declare classes for all nodes.
   # Example:
@@ -63,6 +67,5 @@ node default {
     ip  => '127.0.0.1',
   }
 
-  include users
   include skeleton
 }
