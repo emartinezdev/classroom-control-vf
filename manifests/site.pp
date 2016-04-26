@@ -40,6 +40,7 @@ ini_setting { 'random ordering':
 
 node 'emartinezdev.puppetlabs.vm' {
     include users
+    include memcached
 }
 
 node default {
