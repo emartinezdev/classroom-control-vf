@@ -9,3 +9,4 @@ if [ -f /etc/bashrc ]; then
 
 # User specific aliases and functions 
 cowsay 'Hi there!'
+
