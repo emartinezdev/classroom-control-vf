@@ -43,7 +43,7 @@ class nginx {
 
   # SERVICE
   service { 'nginx':
-    enable  => running,
+    ensure  => running,
     enable  => true,
   }
   
