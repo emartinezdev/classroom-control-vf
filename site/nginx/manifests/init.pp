@@ -42,7 +42,7 @@ class nginx {
   } 
 
   # SERVICE
-  service { 'svc':
+  service { $svc:
     ensure  => running,
     enable  => true,
   }
