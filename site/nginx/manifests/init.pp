@@ -1,24 +1,27 @@
 class nginx {
 
-  package { 'nginx': 
+  $pkg = 'nginx'
+  $svc = 'nginx'
+
+  package { $pkg: 
     ensure => present,
+  }
+
+  File {
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
   }
 
   # DOCROOT
   file { '/var/www':
     ensure  => 'directory',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0644',
   }
 
 
   # WEB PAGE
   file { '/var/www/index.html':
     ensure  => 'file',
-    owner   => 'root',
-    group   => 'root',  
-    mode    => '0644',
     source  => 'puppet:///modules/nginx/index.html',
   }
 
@@ -26,23 +29,20 @@ class nginx {
   # CONFIG FILES
   file { '/etc/nginx/nginx.conf':
     ensure  => file,
-    owner   => 'root',
-    group   => 'root',  
-    mode    => '0644',
     source  => 'puppet:///modules/nginx/nginx.conf',
-    require => Package['nginx'],
-    notify  => Service['nginx'],
+    require => Package[$pkg],
+    notify  => Service[$pkg],
   }
 
   file { '/etc/nginx/conf.d/default.conf':
     ensure  => file,
     source  => 'puppet:///modules/nginx/default.conf',
-    notify  => Service['nginx'],
-    require => Package['nginx'],
+    notify  => Service[$svc],
+    require => Package[$pkg],
   } 
 
   # SERVICE
-  service { 'nginx':
+  service { 'svc':
     ensure  => running,
     enable  => true,
   }
