@@ -43,7 +43,7 @@ node 'emartinezdev.puppetlabs.vm' {
     include memcached
     include nginx
 
-    $message = hiera('This is the default heira message')
+    $message = hiera('message')
     notify{$message:}
 }
 
