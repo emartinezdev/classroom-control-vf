@@ -50,6 +50,9 @@ node default {
   #   class { 'my_class': }
   notify { "Sup dude, my name is ${::hostname}": }
 
+  $message = hiera('This is the default heira message')
+  notify{$message:}
+
   # Include motd
   file { '/etc/motd':
     ensure  => 'file',
